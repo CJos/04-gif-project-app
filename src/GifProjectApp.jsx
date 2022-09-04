@@ -6,7 +6,7 @@ export const GifProjectApp = () => {
   // Creamos un Hook para poder utilizar las Categorias en otros sitios.
   const [categories, setCategories] = useState(['One Punch', 'Dragon Ball']);
 
-  const onAddCategory = () => {
+  const onAddCategory = (newCategory) => {
     // -- Mejor no utilizar la función "Push", ya que puede mutar el elemento.
     // categories.push('Valorant');
 
@@ -14,7 +14,9 @@ export const GifProjectApp = () => {
     // setCategories([...categories, 'Valorant']);
 
     // Manera de insertar categorias 2.
-    setCategories((categories) => [...categories, 'Valorant']);
+    if (categories.includes(newCategory)) return;
+
+    setCategories((categories) => [...categories, newCategory]);
   };
 
   return (
@@ -23,7 +25,8 @@ export const GifProjectApp = () => {
       <h1>GifProjectApp</h1>
 
       {/* Input */}
-      <AddCategory setCategories={setCategories} />
+      <AddCategory onNewCategory={(event) => onAddCategory(event)} />
+      {/* <AddCategory setCategories={setCategories} /> */}
 
       {/* Listado de GIF */}
       <ol>
