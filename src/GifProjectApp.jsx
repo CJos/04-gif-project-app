@@ -1,10 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 export const GifProjectApp = () => {
   // Creamos un Hook para poder utilizar las Categorias en otros sitios.
-  const [categories, setCategories] = useState(['One Punch', 'Dragon Ball']);
+  const [categories, setCategories] = useState(['One Punch']);
 
   const onAddCategory = (newCategory) => {
     // -- Mejor no utilizar la función "Push", ya que puede mutar el elemento.
@@ -21,21 +22,13 @@ export const GifProjectApp = () => {
 
   return (
     <>
-      {/* Titulo */}
       <h1>GifProjectApp</h1>
 
-      {/* Input */}
       <AddCategory onNewCategory={(event) => onAddCategory(event)} />
-      {/* <AddCategory setCategories={setCategories} /> */}
 
-      {/* Listado de GIF */}
-      <ol>
-        {categories.map((category) => {
-          return <li key={category}>{category}</li>;
-        })}
-      </ol>
-
-      {/* Item GIF */}
+      {categories.map((category) => {
+        return <GifGrid key={category} category={category} />;
+      })}
     </>
   );
 };
