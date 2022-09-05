@@ -1,4 +1,4 @@
-export const getGifs = async ({ category }) => {
+export const getGifs = async (category) => {
   // Cargamos en una variable la URL de la API con la categoría que llega por parámetro.
   const url = `https://api.giphy.com/v1/gifs/search?api_key=JYqIDjlIySQdSlNfhMQSvJCxCuVnaaCn&q=${category}&limit=20`;
   // Realizamos la consulta a la URL.
@@ -11,8 +11,5 @@ export const getGifs = async ({ category }) => {
     title: img.title,
     url: img.images.downsized_medium.url,
   }));
-
-  console.log(gifs);
-
   return gifs;
 };
