@@ -1,7 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { AddCategory } from './components/AddCategory';
-import { GifGrid } from './components/GifGrid';
+import { useState } from 'react';
+import { AddCategory, GifGrid } from './components';
 
 export const GifProjectApp = () => {
   // Creamos un Hook para poder utilizar las Categorias en otros sitios.
