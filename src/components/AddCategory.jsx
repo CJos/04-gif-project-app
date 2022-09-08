@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Estamos pasando por parámetro la función que hemos creado anteriormente para insertar las categorías.
 export const AddCategory = ({ onNewCategory }) => {
@@ -12,6 +13,7 @@ export const AddCategory = ({ onNewCategory }) => {
 
   // Creamos una función para el momento en el que enviamos el formulario (clicamos "Enter").
   const onSubmit = (event) => {
+    // console.log('Hola Mundo des de onSubmit');
     event.preventDefault(); //Esta función hace que no haya refresco, por lo tanto no perdamos el valor que hemos escrito.
 
     if (inputValue.trim().length <= 1) return; // Realizamos este condicionante para que, si no escibimos nada en el campo, no se ejecute la función de busqueda.
@@ -22,7 +24,7 @@ export const AddCategory = ({ onNewCategory }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} aria-label="form">
       <input
         type="text"
         placeholder="Buscar GIFs"
@@ -31,4 +33,8 @@ export const AddCategory = ({ onNewCategory }) => {
       />
     </form>
   );
+};
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 };
